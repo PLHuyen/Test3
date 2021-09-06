@@ -3,22 +3,35 @@ import java.util.Scanner;
 public class Test3 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Nhập tháng = ");
-        int n = scan.nextInt();
-
-        int day, month;
-        if (n > 0 && n <13) {
-            if (n == 1 || n == 3 || n == 5 || n == 7 || n == 8 || n == 10 || n == 12) {
-                System.out.format("Tháng %d có 31 ngày\n", n);
-            }
-            if (n == 2) {
-                System.out.println("Tháng %d có 28 hoặc 29 ngày\n");
-            }
-            if (n == 4 || n == 6 || n == 9 || n == 11) {
-                System.out.format("Tháng %d có 30 ngày\n", n);
-            }
+        System.out.print("Nhập tháng : ");
+        int month = scan.nextInt();
+        System.out.print("Nhập năm : ");
+        int year = scan.nextInt();
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                System.out.println("Tháng " + month + " có 31 ngày.");
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                System.out.println("Tháng " + month + " có 30 ngày.");
+                break;
+            case 2:
+                if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                    System.out.println("Tháng " + month + " năm " + year + " có 29 ngày.");
+                } else {
+                    System.out.println("Tháng " + month + " năm " + year + " có 28 ngày.");
+                }
+                break;
+            default:
+                System.out.println("Tháng sai");
         }
-        else
-            System.out.println("Tháng vừa nhập không hợp lệ\n");
     }
 }
